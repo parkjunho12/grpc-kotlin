@@ -22,3 +22,8 @@ allprojects {
 }
 
 tasks.create("assemble").dependsOn(":server:installDist")
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+    }
+}

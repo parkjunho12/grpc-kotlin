@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("kotlin-android")
 }
 
 val composeVersion = "1.1.0"
@@ -17,10 +18,13 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext["coroutinesVersion"]}")
+    implementation("com.google.android.material:material:1.6.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     runtimeOnly("io.grpc:grpc-okhttp:${rootProject.ext["grpcVersion"]}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }
-
+tasks.register("prepareKotlinBuildScriptModel"){}
 android {
     compileSdk = 31
     buildToolsVersion = "31.0.0"
@@ -36,7 +40,7 @@ android {
         if (serverUrl != null) {
             resValue("string", "server_url", serverUrl!!)
         } else {
-            resValue("string", "server_url", "http://www.ghdlwnsgh.co.kr:50051/")
+            resValue("string", "server_url", "http://192.168.15.134:5000/")
         }
     }
 
